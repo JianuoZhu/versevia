@@ -29,8 +29,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: matrix.os == 'ubuntu-latest' && matrix.node == 24
         with:
-          name: sentence-extension
+          name: versevia-extension
           path: |
-            sentence-extension.zip
-            sentence-extension.zip.sha256
+            versevia-extension.zip
+            versevia-extension.zip.sha256
           if-no-files-found: error

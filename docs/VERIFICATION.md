@@ -1,5 +1,11 @@
 # Verification report
 
+## Versevia first GitHub release
+
+- Renamed user-facing branding and release artifacts to Versevia; kept persisted settings/cache identifiers unchanged for compatibility. Updated manifest icon paths, project metadata, download links and release instructions.
+- Reran `npm.cmd run release`: all 166 JavaScript tests and 4 Python packaging tests passed, including syntax checks and a fresh build. Verified packaged manifest/icons, ZIP integrity, local documentation links and SHA-256. No live paid AI/ASR request or new installed-extension YouTube end-to-end test was performed.
+- Public CI results are available in [GitHub Actions](https://github.com/JianuoZhu/versevia/actions); release scope and limitations are recorded in the [v1.5.3 notes](releases/v1.5.3.md).
+
 ## 1.5.3 release review — 2026-09-18
 
 - Reviewed the production caption/semantic pipeline, provider configuration and credential boundaries, audio lifecycle, cache, protocol bridge, build/package scripts, and existing regression coverage.

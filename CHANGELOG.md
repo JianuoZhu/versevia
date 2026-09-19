@@ -2,6 +2,8 @@
 
 ## 1.5.3 — 2026-09-18
 
+- Publish the first GitHub release as **Versevia · 句途**, with refreshed branding, illustrated installation instructions, and standalone `versevia-extension.zip` downloads.
+
 - Fix provider saves mixing endpoint and credentials when the form changes while an origin-permission prompt is pending.
 - Validate job IDs on manual recording progress/results so a late response cannot overwrite a newer recording on the same video.
 - Recheck cancellation before uploading a finished manual recording.

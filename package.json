@@ -1,5 +1,5 @@
 {
-  "name": "youtube-bilingual-subtitles",
+  "name": "versevia",
   "version": "1.5.3",
   "private": true,
   "type": "module",
@@ -26,5 +26,13 @@
     "happy-dom": "^20.14.5"
   },
   "description": "YouTube bilingual subtitles with sentence navigation and configurable translation providers.",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/JianuoZhu/versevia#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JianuoZhu/versevia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JianuoZhu/versevia/issues"
+  }
 }

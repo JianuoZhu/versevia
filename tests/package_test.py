@@ -29,7 +29,7 @@ class PackageTests(unittest.TestCase):
         with zipfile.ZipFile(archive) as z:
             self.assertEqual(set(z.namelist()), {'manifest.json', 'BUILD.txt'})
             self.assertIsNone(z.testzip())
-        self.assertTrue((self.root / 'sentence-extension.zip.sha256').is_file())
+        self.assertTrue((self.root / 'versevia-extension.zip.sha256').is_file())
         packaging.package_extension(self.root)
         self.assertEqual(first, archive.read_bytes())
 

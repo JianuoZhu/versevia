@@ -36,7 +36,7 @@ GitHub CI 配置覆盖 Windows / Linux 与 Node.js 22 / 24。
 npm run release      # 完整验证、打包测试、ZIP 和 SHA-256
 ```
 
-生成 `sentence-extension.zip` 和 `sentence-extension.zip.sha256`。详细操作见[发布指南](RELEASING.zh-CN.md)。
+生成 `versevia-extension.zip` 和 `versevia-extension.zip.sha256`。详细操作见[发布指南](RELEASING.zh-CN.md)。
 
 ## 项目结构
 

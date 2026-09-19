@@ -8,7 +8,7 @@ export function applyPageBrand(prefs) {
   page.style.setProperty('--accent-ink', accentInk(prefs.accentColor || STYLE_DEFAULTS.accentColor));
   if (!document.querySelector('.brand-banner')) {
     const brand = document.createElement('div'); brand.className = 'brand-banner';
-    brand.innerHTML = `<span class="brand-mark">${sentenceIcon}</span><span>Sentence<small>Two languages. One thought.</small></span>`;
+    brand.innerHTML = `<span class="brand-mark">${sentenceIcon}</span><span>Versevia<small>Two languages. One thought.</small></span>`;
     document.querySelector('main').prepend(brand);
   }
 }

@@ -23,7 +23,7 @@ def package_extension(root):
     pkg = json.loads((root / 'package.json').read_text(encoding='utf-8'))
     if manifest['version'] != pkg['version']:
         raise ValueError('Package and extension versions must match.')
-    archive_path = root / 'sentence-extension.zip'
+    archive_path = root / 'versevia-extension.zip'
     # Fixed ZIP metadata and sorted paths give identical bytes for identical builds.
     with zipfile.ZipFile(archive_path, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name, path in sorted(built.items()):
@@ -32,7 +32,7 @@ def package_extension(root):
             info.external_attr = 0o100644 << 16
             archive.writestr(info, path.read_bytes())
     digest = hashlib.sha256(archive_path.read_bytes()).hexdigest()
-    (root / 'sentence-extension.zip.sha256').write_text(f'{digest}  {archive_path.name}\n', encoding='utf-8')
+    (root / 'versevia-extension.zip.sha256').write_text(f'{digest}  {archive_path.name}\n', encoding='utf-8')
     return archive_path
 
 

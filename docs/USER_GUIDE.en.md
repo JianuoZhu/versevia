@@ -1,4 +1,4 @@
-# Sentence · User Guide
+# Versevia · User Guide
 
 [中文 README](../README.md) · [Changelog](../CHANGELOG.md)
 
@@ -12,17 +12,17 @@ A Manifest V3 extension for desktop Chrome and Edge. It displays and navigates r
 
 ## Install a release build
 
-Build the source with `npm ci` and `npm run build`, or extract the standalone extension ZIP from a published release. A source checkout does not include `dist/`.
+Build the source with `npm ci` and `npm run build`, or download and extract [versevia-extension.zip](https://github.com/JianuoZhu/versevia/releases/latest/download/versevia-extension.zip). A source checkout does not include `dist/`.
 
 1. Open `chrome://extensions` in Chrome or `edge://extensions` in Edge.
-2. Enable **Developer mode**, choose **Load unpacked**, and select this project's `dist` directory.
+2. Enable **Developer mode**, choose **Load unpacked**, and select the extracted folder containing `manifest.json` (or `dist/` when building from source).
 3. Reload existing YouTube tabs so the caption observer starts before the player requests captions.
 4. Open a regular YouTube watch page. Click **文 A** in the bottom player control bar, alongside YouTube CC/settings. The upper-left button is a fallback only while YouTube has not mounted its control bar.
 5. Select the source type and source language, then an available track. **Best available track** prefers creator captions in the player's default caption language, falling back to the browser language when no default is exposed.
 
 Chrome 116+ is required for the service-worker-to-offscreen audio capture workflow. Edge must provide the equivalent Chromium APIs. Mobile YouTube, embedded players, Shorts, live streams and other websites are outside this release's supported scope. Do not enable incognito access for this build; split/incognito sessions have not been validated.
 
-The included ZIP, `sentence-extension.zip`, contains the same loadable files; extract it to a folder before using Load unpacked. It is not a signed `.crx` or a store submission.
+The included ZIP, `versevia-extension.zip`, contains the same loadable files; extract it to a folder before using Load unpacked. It is not a signed `.crx` or a store submission.
 
 `native/` contains historical 1.3.x sources. Current releases do not use native messaging or require an audio bundle.
 

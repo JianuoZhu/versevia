@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="extension/icons/sentence.svg" width="76" alt="Sentence">
+<img src="extension/icons/versevia.svg" width="76" alt="Versevia">
 
-# Sentence
+# Versevia · 句途
 
 ### 让想看的视频，变成看得懂的内容。
 
@@ -11,7 +11,7 @@
 看海外课程、听访谈、跟着视频学技能。<br>
 原文与译文同屏，遇到值得细听的一句，按下方向键，再听一遍。
 
-**[开始使用](#开始使用)** · [效果预览](#看懂也听懂) · [常见问题](#常见问题) · [English guide](docs/USER_GUIDE.en.md)
+**[下载安装包](https://github.com/JianuoZhu/versevia/releases/latest/download/versevia-extension.zip)** · [开始使用](#开始使用) · [效果预览](#看懂也听懂) · [常见问题](#常见问题) · [English guide](docs/USER_GUIDE.en.md)
 
 <sub>Chrome / Edge 桌面版 · 自选翻译服务 · MIT 开源</sub>
 
@@ -19,7 +19,7 @@
 
 <br>
 
-![Sentence 日中双语字幕阅读效果](docs/images/bilingual-reading.jpg)
+![Versevia 日中双语字幕阅读效果](docs/images/bilingual-reading.jpg)
 
 <p align="center"><sub>生产界面实截 · 日中样例字幕；演示使用预设译文，展示排版与交互，不代表实际模型翻译质量。</sub></p>
 
@@ -42,7 +42,7 @@
 深色 Midnight 与浅色 Mint，搭配自定义字体、颜色、透明度和双语字号比例。开启鼠标调整后，还可以直接移动、缩放字幕。
 
 <p align="center">
-  <img src="docs/images/appearance-controls.jpg" width="650" alt="Sentence 外观设置：主题、字体、颜色和双语实时预览">
+  <img src="docs/images/appearance-controls.jpg" width="650" alt="Versevia 外观设置：主题、字体、颜色和双语实时预览">
   <br><sub>外观设置实截 · 本地演示环境，使用样例文本。</sub>
 </p>
 
@@ -50,14 +50,14 @@
 
 **支持桌面 Chrome 116+，以及具备对应功能的 Edge。** 使用扩展发布包无需安装 Python、Node.js 或本地辅助程序。
 
-1. 从仓库的 **Releases** 下载 `sentence-extension.zip` 并解压。
+1. 从 [Releases](https://github.com/JianuoZhu/versevia/releases/latest) 下载 **[versevia-extension.zip](https://github.com/JianuoZhu/versevia/releases/latest/download/versevia-extension.zip)** 并解压。
 2. 打开 `chrome://extensions` 或 `edge://extensions`，开启「开发者模式」，点击「加载已解压的扩展程序」，选择含 `manifest.json` 的解压目录。
-3. 刷新 YouTube 视频页，点击播放器底部的 **Sentence 字幕图标**，选择字幕来源。
+3. 刷新 YouTube 视频页，点击播放器底部的 **Versevia 字幕图标**，选择字幕来源。
 4. 打开 **Providers**，配置翻译服务并点击 **Save, connect & use**；将目标语言设为 **Chinese / zh**，即可双语阅读。
 
 > 初始翻译引擎为关闭状态，目标语言为西班牙语。只看原字幕无需配置翻译服务；需要译文时再连接服务商。
 
-如果仓库尚未发布 Releases，可按[源码安装指南](docs/DEVELOPMENT.zh-CN.md#从源码安装)构建。GitHub 自动生成的 Source code 压缩包是源码，不能直接作为扩展加载。
+希望从源码安装，可按[源码安装指南](docs/DEVELOPMENT.zh-CN.md#从源码安装)构建。GitHub 自动生成的 Source code 压缩包是源码，不能直接作为扩展加载。
 
 ## 常见问题
 

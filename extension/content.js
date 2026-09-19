@@ -192,9 +192,9 @@ function mount() {
     @media(max-height:420px){#panel{top:45px;max-height:calc(100% - 65px)}#subtitles{bottom:45px;font-size:18px}}
     ${appearanceStyles}
   </style>
-  <button id="toggle" aria-label="Sentence subtitle settings" aria-expanded="false">${sentenceIcon}</button>
-  <section id="panel" aria-label="Sentence settings" hidden>
-    <header><div class="brand">${sentenceIcon}<div><div class="eyebrow">Two languages. One thought.</div><strong>Sentence</strong></div></div><button id="close" aria-label="Close settings">×</button></header>
+  <button id="toggle" aria-label="Versevia subtitle settings" aria-expanded="false">${sentenceIcon}</button>
+  <section id="panel" aria-label="Versevia settings" hidden>
+    <header><div class="brand">${sentenceIcon}<div><div class="eyebrow">Two languages. One thought.</div><strong>Versevia</strong></div></div><button id="close" aria-label="Close settings">×</button></header>
     <nav class="tabs" aria-label="Settings tabs"><button id="reading-tab" role="tab" aria-selected="true">Subtitles</button><button id="appearance-tab" role="tab" aria-selected="false">Appearance</button></nav>
     <div id="reading-settings"><label class="check"><input id="enabled" type="checkbox"> Enable subtitle overlay</label>
     <div class="grid">
@@ -214,7 +214,7 @@ function mount() {
     <div class="row"><button id="translate-all" title="Translate all loaded subtitles; provider charges may apply">Translate whole video</button><button id="stop-translation">Stop translation</button></div>
     <p id="translation-progress" role="status" aria-live="polite"></p>
     <button id="retry" class="wide" hidden>Retry subtitle processing</button></div>
-    <div class="speech-help" id="speech-help" hidden>No CC needed. Open the Sentence toolbar button, connect a speech service, then choose Generate from video audio. You can keep using the player while subtitles are prepared.</div>
+    <div class="speech-help" id="speech-help" hidden>No CC needed. Open the Versevia toolbar button, connect a speech service, then choose Generate from video audio. You can keep using the player while subtitles are prepared.</div>
     ${appearanceMarkup}
     <p id="status" role="status"></p><p id="capture" role="status"></p>
     <div id="credit">Generate speech subtitles from the extension toolbar button.</div>
@@ -281,8 +281,8 @@ function mountPlayerButton() {
   if (!playerButton?.isConnected) {
     playerButton = document.createElement('button');
     playerButton.id = 'sentence-player-button'; playerButton.className = 'ytp-button'; playerButton.type = 'button';
-    playerButton.title = 'Sentence · bilingual subtitles';
-    playerButton.setAttribute('aria-label', 'Sentence subtitle settings');
+    playerButton.title = 'Versevia · bilingual subtitles';
+    playerButton.setAttribute('aria-label', 'Versevia subtitle settings');
     playerButton.setAttribute('aria-expanded', String(!root.getElementById('panel').hidden));
     playerButton.style.cssText = 'width:48px;height:100%;padding:0;margin:0;display:inline-flex;align-items:center;justify-content:center;vertical-align:top;pointer-events:auto;position:relative;top:0;transform:none;float:left;';
     playerButton.innerHTML = sentenceIcon;
