@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sentence</title><link rel="stylesheet" href="theme.css"><link rel="icon" type="image/png" href="icons/sentence-32.png"></head><body class="popup"><main>
+<div class="eyebrow">Bilingual YouTube</div><h1>Read by sentence.</h1>
+<label class="check"><input type="checkbox" id="enabled"> Enable on YouTube</label>
+<div class="grid"><label>Display<select id="mode"><option value="bilingual">Original + translation</option><option value="original">Original only</option><option value="translation">Translation only</option></select></label><label>Playback speed<select id="speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="1.75">1.75×</option><option value="2">2×</option></select></label></div>
+<p id="page-status" class="muted"></p><button id="options" class="secondary">Languages &amp; providers</button>
+<section><div class="eyebrow">No CC? Create your own</div><h2>Speech subtitles</h2><p class="muted">Generate ahead from video audio. Pause, seek and change speed freely.</p>
+<p id="speech-readiness" class="status" role="status"></p><button id="speech-options" class="secondary">Configure speech service</button>
+<label>Process<select id="audio-scope"><option value="nearby">5 minutes near current position</option><option value="full">Full video · up to 4 hours</option></select></label>
+<label class="check"><input type="checkbox" id="audio-consent"> <span>Download this video's audio in the browser and send the selected portion to my speech provider. This may incur charges.</span></label>
+<button id="audio-start" disabled>Generate from video audio</button>
+<p class="muted">No companion app required. SABR support is experimental: after updating, reload YouTube and play briefly before generating. Uses the audio track selected in YouTube.</p>
+<button id="audio-test" class="secondary">Test browser audio · no speech API</button>
+<small>Generated text is cached for 30 days. Clear cache removes it.</small>
+<details><summary>Manual recording fallback</summary>
+<label>Recording limit<select id="duration"><option value="15">15 seconds</option><option value="30" selected>30 seconds</option><option value="60">60 seconds</option></select></label>
+<label class="check"><input type="checkbox" id="consent"> <span>Send this recording to my configured speech provider for transcription. I understand it may incur charges.</span></label>
+<button id="start" disabled>Record &amp; transcribe</button><small>Manual recording requires 1× playback. Pause, seek or speed changes cancel the recording.</small></details>
+<div class="row"><button id="finish" class="secondary" hidden>Finish &amp; transcribe</button><button id="cancel" class="danger" hidden>Cancel audio task</button></div>
+<p id="capture-status" class="status" role="status"></p></section>
+<button id="view-generated" class="secondary" hidden>View generated subtitles · jump to clip</button>
+<p id="status" class="status" role="status"></p>
+</main><script type="module" src="popup.js"></script></body></html>

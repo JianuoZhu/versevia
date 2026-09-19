@@ -1,0 +1,30 @@
+{
+  "name": "youtube-bilingual-subtitles",
+  "version": "1.5.3",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "icons": "node scripts/icons.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "verify": "npm run build && npm run check && npm test",
+    "probe:youtube": "node scripts/probe-youtube.mjs",
+    "lab": "node scripts/lab-server.mjs",
+    "test:package": "python -m unittest discover -s tests -p package_test.py",
+    "package": "python scripts/package.py",
+    "release": "npm run verify && npm run test:package && npm run package"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "esbuild": "^0.28.2",
+    "fake-indexeddb": "^6.2.5",
+    "googlevideo": "^4.1.1",
+    "happy-dom": "^20.14.5"
+  },
+  "description": "YouTube bilingual subtitles with sentence navigation and configurable translation providers.",
+  "license": "MIT"
+}
