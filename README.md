@@ -19,9 +19,9 @@
 
 <br>
 
-![Versevia 日中双语字幕阅读效果](docs/images/bilingual-reading.jpg)
+![Versevia 中英文双语字幕阅读效果](docs/images/bilingual-reading.jpg)
 
-<p align="center"><sub>生产界面实截 · 日中样例字幕；演示使用预设译文，展示排版与交互，不代表实际模型翻译质量。</sub></p>
+<p align="center"><sub>实际界面截图 · 中英文样例字幕；演示使用预设译文，展示排版与交互，不代表实际模型翻译质量。</sub></p>
 
 ## 看懂，也听懂
 

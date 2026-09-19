@@ -2,7 +2,8 @@ import { DEFAULTS } from '/extension/config.js';
 import { translate } from '/extension/providers.js';
 import { indexSource } from '/extension/semantic.js';
 const semanticDemo = new URLSearchParams(location.search).has('semantic');
-let preferences = { ...DEFAULTS, semanticSegmentation: semanticDemo, mode: 'bilingual', engine: 'ai', ...(semanticDemo ? { targetLanguage: 'zh' } : {}) };
+const showcaseDemo = new URLSearchParams(location.search).has('showcase');
+let preferences = { ...DEFAULTS, semanticSegmentation: semanticDemo, mode: 'bilingual', engine: 'ai', ...(semanticDemo || showcaseDemo ? { targetLanguage: 'zh' } : {}) };
 const semanticPhrases = ['おはようございます', 'かずきです', '今回はミセスグリーンアップルのかっこいいギターフレーズを紹介しますので最後まで見ていただけるとうれしいです', '皆さんこの曲を聞いたことがありますか'];
 const semanticCues = semanticPhrases.map((text, i) => ({ text, start: [0, 2, 4, 14][i], end: [2, 4, 14, 18][i] }));
 const semanticSource = indexSource(semanticCues, 'ja');
@@ -17,6 +18,12 @@ const replies = new Map([
   ['Take your time, and move forward one sentence at a time.', 'Tómate tu tiempo y avanza una frase a la vez.'],
   ['You can always go back to hear something again.', 'Siempre puedes volver para escuchar algo de nuevo.']
 ]);
+if (showcaseDemo) {
+  replies.set('Every new language opens a different way of seeing the world.', '每学会一种语言，就多一种看世界的方式。');
+  replies.set('A complete thought is easier to understand than a handful of fragments.', '完整的意思，比零散的片段更容易理解。');
+  replies.set('Take your time, and move forward one sentence at a time.', '慢慢来，一句一句，走得更远。');
+  replies.set('You can always go back to hear something again.', '没听清的地方，随时回到那一句再听一遍。');
+}
 globalThis.chrome = { runtime: { id: 'lab', onMessage: { addListener: fn => listeners.push(fn) }, sendMessage: async message => {
   if (message.type === 'get-preferences') return { ok: true, preferences };
   if (message.type === 'set-preferences') { preferences = { ...preferences, ...message.preferences }; listeners.forEach(fn => fn({ type: 'preferences-changed', preferences }, { id: 'lab' }, () => {})); return { ok: true, preferences }; }
@@ -40,7 +47,8 @@ globalThis.chrome = { runtime: { id: 'lab', onMessage: { addListener: fn => list
 window.addEventListener('message', event => {
   const m = event.data; if (event.source !== window || m?.channel !== 'sentence-youtube-v1' || m.direction !== 'request') return;
   const data = m.type === 'discover' ? { ready: true, tracks: semanticDemo ? [{ id: 'a.ja', language: 'ja', label: 'Japanese', kind: 'automatic', isDefault: true }] : [{ id: '.en', language: 'en', label: 'English', kind: 'creator', isDefault: true }, { id: 'a.en', language: 'en', label: 'English', kind: 'automatic' }] } : semanticDemo ?
-    { body: JSON.stringify({ events: semanticCues.map(c => ({ tStartMs: c.start * 1000, dDurationMs: (c.end - c.start) * 1000, segs: [{ utf8: c.text }] })) }) } :
+    { body: JSON.stringify({ events: semanticCues.map(c => ({ tStartMs: c.start * 1000, dDurationMs: (c.end - c.start) * 1000, segs: [{ utf8: c.text }] })) }) } : showcaseDemo ?
+    { body: JSON.stringify({ events: [...replies.keys()].map((text, i) => ({ tStartMs: i * 7000, dDurationMs: 6000, segs: [{ utf8: text }] })) }) } :
     { body: JSON.stringify({ events: [
       { tStartMs: 0, dDurationMs: 3000, segs: [{ utf8: 'Every new language opens' }] },
       { tStartMs: 3000, dDurationMs: 5000, segs: [{ utf8: 'a different way of seeing the world.' }] },
@@ -51,6 +59,10 @@ window.addEventListener('message', event => {
   window.postMessage({ ...data, channel: m.channel, direction: 'response', requestId: m.requestId, videoId: m.videoId }, location.origin);
 });
 const video = document.querySelector('video');
+if (showcaseDemo) {
+  document.getElementById('lab-description').textContent = 'README SHOWCASE: English captions and predefined Chinese translations rendered by the production subtitle interface. Synthetic media; no external provider is called.';
+  document.getElementById('live-translation').hidden = true;
+}
 if (semanticDemo) {
   document.getElementById('lab-description').textContent = 'SEMANTIC PIPELINE FIXTURE: Japanese captions with hand-authored sentence boundaries and Chinese translations. Production player code; simulated model responses and timing. No AI provider is called.';
   document.getElementById('live-translation').hidden = true;
@@ -63,7 +75,7 @@ document.getElementById('live-translation').onclick = () => {
   document.getElementById('lab-description').textContent = 'LIVE TRANSLATION: these public demo sentences are sent to the real MyMemory API. The caption timeline and extension messaging remain local fixtures. No API key is used.';
   listeners.forEach(fn => fn({ type: 'preferences-changed', preferences, providerChanged: true }, { id: 'lab' }, () => {}));
 };
-document.getElementById('seek').onclick = () => { video.currentTime = 1; document.getElementById('movie_player').focus(); };
+document.getElementById('seek').onclick = () => { video.currentTime = 1; if (showcaseDemo) video.pause(); document.getElementById('movie_player').focus(); };
 document.getElementById('navigate').onclick = () => {
   history.pushState({}, '', location.search.includes('abcdefghijk') ? '/watch?v=lmnopqrstuv' : '/watch?v=abcdefghijk');
   document.dispatchEvent(new Event('yt-navigate-finish'));
